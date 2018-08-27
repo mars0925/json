@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import org.json.JSONException;
@@ -36,6 +37,24 @@ public class MainActivity extends AppCompatActivity {
         jsonObject1.addProperty("age",2);
         jsonObject1.addProperty("wie",2.5);
         System.out.println(jsonObject1);
+
+        /*建立JsonArray、JsonElement对象*/
+
+        List<String> cate1=new ArrayList<String>();
+        cate1.add("Local Flavor");
+        cate1.add("localflavor");
+
+        List<String> cate2=new ArrayList<String>();
+        cate2.add("Mass Media");
+        cate2.add("massmedia");
+
+        List<List<String>> cates=new ArrayList<List<String>>();
+        cates.add(cate1);cates.add(cate2);
+        JsonElement categoriesElement=gson.toJsonTree(cates);
+        jsonObject1.add("JsonArray",categoriesElement);
+        System.out.println(jsonObject1);
+
+
     }
 
     /*產生model的資料*/
